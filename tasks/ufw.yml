@@ -9,7 +9,7 @@
   ufw:
     direction: incoming
     state: enabled
-    policy: allow
+    policy: "{{ openvpn_ufw_default_incoming_policy | bool | ternary('deny', 'allow') }}"
 
 - name: Enable forwarding - ufw
   lineinfile:
